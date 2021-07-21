@@ -29,9 +29,8 @@ h2 {
 }
 
 input[type='checkbox'] {
-    /* background-color: hsl(184, 83%, 23%); */
-    color: hsl(184, 83%, 23%);
     margin-right: 0;
+    cursor: pointer;
 }
 
 .container {
