@@ -16,10 +16,20 @@ const generatePassword = (
     numbers,
     symbols
 ) => {
+    let totalAllowed = '';
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    if (upper) totalAllowed += alphabet.toUpperCase();
+    if (lower) totalAllowed += alphabet;
+    if (numbers) totalAllowed += '0123456789';
+    if (symbols) totalAllowed += '!@#$%^&*()-_=+[{]}<>?';
 
-    console.log(length, upper, lower, numbers, symbols);
+    let password = '';
 
-    return 'hello';
+    for (let i=0; i<length; i++) {
+        password += 'a';
+    }
+
+    return password;
 };
 
 // character codes - https://net-comber.com/charset.html
