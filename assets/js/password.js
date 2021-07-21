@@ -1,23 +1,26 @@
 $('#clipboard').on('click', () => {
-    const textarea = document.createElement('textarea');
     const password = $('#result').text();
-
     if (password === "🤷 You didn't pick anything!") return;
 
+    // create a textarea to copy to clipboard, then remove textarea
+    const textarea = document.createElement('textarea');
     textarea.value = password;
     $('body').append(textarea);
     textarea.select();
     document.execCommand('copy');
     textarea.remove();
-    alert('Password copied to clipboard!');
+
+    // alert the user
+    $('#result').text('Copied to clipboard!');
+    setTimeout(() => $('#result').text(password), 1500);
 });
 
 $('#generate').on('click', () => {
     const length = +$('#length').val(); // "+" in place of "parseInt()"
-    const upper = $('#uppercase')[0].checked;
-    const lower = $('#lowercase')[0].checked;
-    const numbers = $('#numbers')[0].checked;
-    const symbols = $('#symbols')[0].checked;
+    const upper = $('#uppercase')[0].checked; // boolean value
+    const lower = $('#lowercase')[0].checked; // boolean value
+    const numbers = $('#numbers')[0].checked; // boolean value
+    const symbols = $('#symbols')[0].checked; // boolean value
 
     if (!upper && !lower && !numbers && !symbols) $('#result').text("🤷 You didn't pick anything!");
     else $('#result').text(generatePassword(length, upper, lower, numbers, symbols));
@@ -36,13 +39,3 @@ const generatePassword = (length, upper, lower, numbers, symbols) => {
 
     return password;
 };
-
-// character codes - https://net-comber.com/charset.html
-
-// const getRandomUppercase = () => String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-// const getRandomLowercase = () => String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-// const getRandomNumber = () => JSON.stringify(Math.floor(Math.random() * 10));
-// const getRandomSymbol = () => {
-//     const symbols = '!@#$%^&*()-_=+[{]}<>?';
-//     return symbols[Math.floor(Math.random() * symbols.length)];
-// };
