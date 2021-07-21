@@ -2,6 +2,8 @@ $('#clipboard').on('click', () => {
     const textarea = document.createElement('textarea');
     const password = $('#result').text();
 
+    if (password === "🤷 You didn't pick anything!") return;
+
     textarea.value = password;
     $('body').append(textarea);
     textarea.select();
