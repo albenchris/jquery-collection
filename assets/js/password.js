@@ -26,7 +26,7 @@ const generatePassword = (
     let password = '';
 
     for (let i=0; i<length; i++) {
-        password += 'a';
+        password += totalAllowed[Math.floor(Math.random() * totalAllowed.length)];
     }
 
     return password;
