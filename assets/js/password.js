@@ -6,7 +6,8 @@ $('#generate').on('click', () => {
     const numbers = $('#numbers')[0].checked;
     const symbols = $('#symbols')[0].checked;
 
-    $('#result').text(generatePassword(length, upper, lower, numbers, symbols));
+    if (!upper && !lower && !numbers && !symbols) $('#result').text("🤷 You didn't pick anything!");
+    else $('#result').text(generatePassword(length, upper, lower, numbers, symbols));
 });
 
 const generatePassword = (
